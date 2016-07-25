@@ -1,8 +1,55 @@
 <html>
-  <head>
+  <head>	
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
-  </head>
+	<title>
+		Weather Station
+	</title>
+	<meta charset='UTF-8'>
+	</head>
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script>		
+		$(document).ready(function(){
+			$('form').submit(function(event){
+				x = $("input:first").val();
+				$.get("http://api.openweathermap.org/data/2.5/forecast/weather?q=" + x + "&units=imperial&appid=f1d3f433a6d6e9437ed95b869365e9be", function(data){
+				console.log(data);
+				console.log(data.city.name);
+				console.log(data.city.coord.lat);
+				console.log(data.city.coord.lon);
+					
+								},'json');
+				var temp ="";
+				temp = "<h2 id='temp'>" + "Temp: " + data.list[0].main.temp + "</h2>";
+				$('#results').html(temp);
+				var city_name ="";
+				city_name = "<h4 id='City' >" + data.city.name + "</h4>";
+				$('#city_name').html(city_name);
+				},'json');
+				return false; 
+			})	
+	</script>
+  
   <body>
-    The best place to start is the "WelcomeController.py" file in app/controllers.
+	</h3> Submit Your City </h3>	
+	<form id='city_submission' action='' method='' name='test' value='test2'>
+		<input id='city_text_box' type='text' value='input_city' name='the_city'></input>
+		<input id='button' type='submit' value='submit query'></input>
+	</form>
+	<p><div id='city_name' ></div></p>
+	<div id='results' ></div>
+	<div id='map'></div>
+	<script>
+	var map;
+					function initMap() {
+					map = new google.maps.Map(document.getElementById('map'), {
+					center: {lat: -34.397, lng: 150.644},
+					zoom: 8
+								});
+								}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzSQQTi6DlZvctlgKEZsNH_NA7nm4HFPg&callback=initMap" ></script>
   </body>
 </html>
+
+
+

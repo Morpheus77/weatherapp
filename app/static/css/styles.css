@@ -1,3 +1,34 @@
-* {
-  font-family: monaco;
+
+
+#city_name{
+		height:75px;
+		width: 496px;
+		border: 2px solid red;
+		
+		
+}
+#results{
+		display:block;
+		height: 100px;
+		width: 500px;
+		border:2px solid black;
+}
+#City{
+	text-align:center;
+	font-size: 300%;
+	margin: 0px;
+}
+
+#temp{
+	font-size: 150%;
+}
+
+
+#map{
+	display:block;
+	height: 600px;
+	width: 700px;
+	border:2px solid red;
+	margin-top:30px;
+
 }
